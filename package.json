@@ -1,0 +1,44 @@
+{
+  "name": "vite-h5-starter",
+  "private": true,
+  "description": "A better  starter template",
+  "author": {
+    "name": "lio-zero",
+    "email": "licroning@163.com",
+    "url": "https://github.com/lio-zero"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check build-only",
+    "preview": "vite preview --port 4173",
+    "test:unit": "vitest --environment jsdom",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "up": "taze major -I"
+  },
+  "dependencies": {
+    "pinia": "^2.0.21",
+    "vue": "^3.2.37",
+    "vue-router": "^4.1.5"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.26.1",
+    "@types/jsdom": "^20.0.0",
+    "@types/node": "^18.7.13",
+    "@vitejs/plugin-vue": "^3.0.3",
+    "@vue/test-utils": "^2.0.2",
+    "@vue/tsconfig": "^0.1.3",
+    "eslint": "^8.23.0",
+    "jsdom": "^20.0.0",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.54.5",
+    "taze": "^0.7.6",
+    "typescript": "~4.8.2",
+    "vite": "^3.0.9",
+    "vitest": "^0.22.1",
+    "vue-tsc": "^0.40.2"
+  }
+}
