@@ -1,20 +1,52 @@
 import { URL, fileURLToPath } from 'node:url'
-import legacy from '@vitejs/plugin-legacy'
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { loadEnv } from 'vite'
+import type { ConfigEnv, UserConfig } from 'vite'
+import { createVitePlugins } from './build/vite/plugins'
+import { createProxy } from './build/vite/proxy'
+import { wrapperEnv } from './build/utils'
+import { OUTPUT_DIR } from './build/constant'
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [
-    vue(),
-    // https://github.com/vitejs/vite/tree/main/packages/plugin-legacy
-    legacy({
-      targets: ['defaults', 'not IE 11'],
-    }),
-  ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
+export default ({ command, mode }: ConfigEnv): UserConfig => {
+  const root = process.cwd()
+
+  const env = loadEnv(mode, root)
+
+  // loadEnv 读取的布尔类型是字符串。此函数可以转换为布尔类型
+  const viteEnv = wrapperEnv(env)
+
+  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY, VITE_DROP_CONSOLE } = viteEnv
+
+  const isBuild = command === 'build'
+
+  return {
+    base: VITE_PUBLIC_PATH,
+    root,
+    server: {
+      host: true,
+      port: VITE_PORT,
     },
-  },
-})
+    esbuild: {
+      pure: VITE_DROP_CONSOLE ? ['console.log', 'debugger'] : [],
+    },
+    build: {
+      target: 'es2015',
+      cssTarget: 'chrome80',
+      outDir: OUTPUT_DIR,
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          keep_infinity: true,
+          drop_console: VITE_DROP_CONSOLE,
+        },
+      },
+      chunkSizeWarningLimit: 2000,
+    },
+    plugins: createVitePlugins(viteEnv, isBuild),
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+      },
+    },
+  }
+}
