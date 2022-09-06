@@ -2,7 +2,6 @@ import { URL, fileURLToPath } from 'node:url'
 import { loadEnv } from 'vite'
 import type { ConfigEnv, UserConfig } from 'vite'
 import { createVitePlugins } from './build/vite/plugins'
-import { createProxy } from './build/vite/proxy'
 import { wrapperEnv } from './build/utils'
 import { OUTPUT_DIR } from './build/constant'
 
@@ -15,7 +14,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
   // loadEnv 读取的布尔类型是字符串。此函数可以转换为布尔类型
   const viteEnv = wrapperEnv(env)
 
-  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY, VITE_DROP_CONSOLE } = viteEnv
+  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_DROP_CONSOLE } = viteEnv
 
   const isBuild = command === 'build'
 

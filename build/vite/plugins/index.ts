@@ -7,7 +7,6 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import legacy from '@vitejs/plugin-legacy'
 import vueSetupExtend from 'vite-plugin-vue-setup-extend'
-import Inspect from 'vite-plugin-inspect'
 import { autoRegistryComponents } from './component'
 import { autoImportDeps } from './autoImport'
 import { configVisualizerConfig } from './visualizer'
@@ -35,7 +34,7 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
     // setup name 属性
     vueSetupExtend(),
     // 监听配置文件改动重启
-    configRestartPlugin()
+    configRestartPlugin(),
   ]
 
   // @vitejs/plugin-legacy
@@ -51,14 +50,12 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
   // vite-plugin-style-import
   vitePlugins.push(configStyleImportPlugin())
 
-  // vite-plugin-inspect
-  Inspect()
-
-  vueSetupExtend()
+  // vite-plugin-vue-setup-extend
+  vitePlugins.push(vueSetupExtend())
 
   if (isBuild) {
-    // 开启.gz压缩  rollup-plugin-gzip
-    configCompressPlugin(VITE_BUILD_COMPRESS, VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE)
+    // 开启 .gz 压缩
+    vitePlugins.push(configCompressPlugin(VITE_BUILD_COMPRESS, VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE))
   }
 
   return vitePlugins

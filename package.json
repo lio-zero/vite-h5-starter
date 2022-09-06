@@ -20,7 +20,7 @@
     "report": "cross-env REPORT=true npm run build",
     "type-check": "vue-tsc --noEmit",
     "lint:fix": "eslint --cache \"src/**/*.{vue,ts,tsx}\" --fix",
-    "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
+    "lint:lint-staged": "lint-staged",
     "prepare": "husky install",
     "up": "taze major -I"
   },
@@ -63,5 +63,10 @@
     "vite-plugin-vue-setup-extend": "^0.4.0",
     "vitest": "^0.23.1",
     "vue-tsc": "^0.40.9"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,vue,html}": [
+      "eslint --fix"
+    ]
   }
 }
