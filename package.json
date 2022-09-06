@@ -1,7 +1,7 @@
 {
   "name": "vite-h5-starter",
   "private": true,
-  "description": "A better  starter template",
+  "description": "A better H5 Starter Template (Vite + Vue 3)",
   "author": {
     "name": "lio-zero",
     "email": "licroning@163.com",
@@ -47,7 +47,8 @@
     "jsdom": "^20.0.0",
     "lint-staged": "^13.0.3",
     "npm-run-all": "^4.1.5",
-    "postcss-pxtorem": "^6.0.0",
+    "postcss": "^8.4.16",
+    "postcss-px-to-viewport": "^1.1.1",
     "rollup-plugin-visualizer": "^5.8.1",
     "sass": "^1.54.8",
     "taze": "^0.8.0",

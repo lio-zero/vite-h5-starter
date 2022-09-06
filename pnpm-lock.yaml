@@ -18,7 +18,8 @@ specifiers:
   lint-staged: ^13.0.3
   npm-run-all: ^4.1.5
   pinia: ^2.0.22
-  postcss-pxtorem: ^6.0.0
+  postcss: ^8.4.16
+  postcss-px-to-viewport: ^1.1.1
   rollup-plugin-visualizer: ^5.8.1
   sass: ^1.54.8
   taze: ^0.8.0
@@ -54,14 +55,15 @@ devDependencies:
   '@vitejs/plugin-vue-jsx': 2.0.1_vite@3.1.0+vue@3.2.38
   '@vue/test-utils': 2.0.2_vue@3.2.38
   '@vue/tsconfig': 0.1.3_@types+node@18.7.15
-  autoprefixer: 10.4.8
+  autoprefixer: 10.4.8_postcss@8.4.16
   cross-env: 7.0.3
   eslint: 8.23.0
   husky: 8.0.1
   jsdom: 20.0.0
   lint-staged: 13.0.3
   npm-run-all: 4.1.5
-  postcss-pxtorem: 6.0.0
+  postcss: 8.4.16
+  postcss-px-to-viewport: 1.1.1
   rollup-plugin-visualizer: 5.8.1
   sass: 1.54.8
   taze: 0.8.0
@@ -1352,7 +1354,7 @@ packages:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
     dev: true
 
-  /autoprefixer/10.4.8:
+  /autoprefixer/10.4.8_postcss@8.4.16:
     resolution: {integrity: sha512-75Jr6Q/XpTqEf6D2ltS5uMewJIx5irCU1oBYJrWjFenq/m12WRRrz6g15L1EIoYvPLXTbEry7rDOwrcYNj77xw==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
@@ -1364,6 +1366,7 @@ packages:
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
+      postcss: 8.4.16
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -4468,10 +4471,11 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /postcss-pxtorem/6.0.0:
-    resolution: {integrity: sha512-ZRXrD7MLLjLk2RNGV6UA4f5Y7gy+a/j1EqjAfp9NdcNYVjUMvg5HTYduTjSkKBkRkfqbg/iKrjMO70V4g1LZeg==}
-    peerDependencies:
-      postcss: ^8.0.0
+  /postcss-px-to-viewport/1.1.1:
+    resolution: {integrity: sha512-2x9oGnBms+e0cYtBJOZdlwrFg/mLR4P1g2IFu7jYKvnqnH/HLhoKyareW2Q/x4sg0BgklHlP1qeWo2oCyPm8FQ==}
+    dependencies:
+      object-assign: 4.1.1
+      postcss: 8.4.16
     dev: true
 
   /postcss-selector-parser/6.0.10:
