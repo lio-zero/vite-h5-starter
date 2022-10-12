@@ -20,8 +20,18 @@ const tabbarData: TabbarType[] = reactive([
 </script>
 
 <template>
-  <van-tabbar v-model="active" fixed :placeholder="true" :route="true">
-    <van-tabbar-item v-for="(item, index) in tabbarData" :key="index" :icon="item.icon" :to="item.to">
+  <van-tabbar
+    v-model="active"
+    fixed
+    :placeholder="true"
+    :route="true"
+  >
+    <van-tabbar-item
+      v-for="(item, index) in tabbarData"
+      :key="index"
+      :icon="item.icon"
+      :to="item.to"
+    >
       {{ item.title }}
     </van-tabbar-item>
   </van-tabbar>
